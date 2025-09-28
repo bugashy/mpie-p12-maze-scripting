@@ -17,9 +17,9 @@ public class MoveMaze : MonoBehaviour
         float xRotation = Input.GetAxis("Vertical") * Time.deltaTime * rotation_speed;
         float zRotation = Input.GetAxis("Horizontal") * Time.deltaTime * rotation_speed;
 
-        current_tilt.x = Mathf.Clamp(current_tilt.x, -tilt_limit, tilt_limit);
-        current_tilt.y = Mathf.Clamp(current_tilt.y, -tilt_limit, tilt_limit);
+        current_tilt.x = Mathf.Clamp(current_tilt.x + xRotation, -tilt_limit, tilt_limit);
+        current_tilt.z = Mathf.Clamp(current_tilt.z + zRotation, -tilt_limit, tilt_limit);
 
-        transform.rottation = Quaternion.Euler(current_tilt);
+        transform.rotation = Quaternion.Euler(current_tilt);
     }
 }
